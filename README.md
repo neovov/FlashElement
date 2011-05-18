@@ -1,6 +1,7 @@
 # Wait… What? #
 
 Haven't you ever been bored to simply make this:
+
 	my_object_element.addEventListener("click", handleFreakinClick, false);
 
 And just handle it like a regular <div> or whatever?
@@ -17,21 +18,30 @@ Well… I do, so I tested this proof of concept and it seems to work.
 # How to use #
 
 In AS3 :
+
 	FlashElement.dispatch("custom"); // I want a custom event, create a bulk one
+
 or
+
 	FlashElement.dispatch(event); // Dispatch an existing event (MouseEvent, KeyboardEvent, etc)
 
 In JS :
 1. Create a bridge instance:
+
 	new FlashElement(); // Fully automatic
 	new FlashElement("player_id"); // Define the object ID and use default options (attributes, flashvars)
 	new FlashElement("player_id", options); // Define the object ID and use specific options (will be merged to default)
 	new FlashElement(options); // Set automagically an ID and use specific options
+
 2. Create the <object> and replace a dummy node (I know, this method name is crappy)
+
 	instance.create("dummy_node"); // Return the <object> element
+
 3. Register some listerners
+
 	element.addEventListener("click", handler, false); // Good browsers
 	element.attachEvent("click", handler); // Bad browsers
+
 4. Have a beer
 
 # TODO #
