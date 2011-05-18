@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+
+	<!-- HTML5 for IE -->
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<style type="text/css">
+		object { border: 1px solid #FF017D; }
+	</style>
+
+	<title>FlashElement example</title>
+</head>
+
+<body>
+	<div id="replace-me"></div>
+	<script src="FlashElement.js"></script>
+	<script>
+		var element = (new FlashElement()).create("replace-me");
+
+		function handleClick(e) {
+			console.info("cliked!", e);
+		}
+
+		function handleBlip(e) {
+			console.info("Custom event FTW!!1", e);
+
+			var fun = ["blip", "blop", "blup"];
+			console.log(fun[Math.floor(Math.random() * fun.length)]);
+		}
+
+		function handleCustomForIE(e) {
+			// Call by defining the this (is window by default…) an the event from Flash
+			handleBlip.call(element, e.originalEvent);
+		}
+
+		if (element.addEventListener) {
+			element.addEventListener("click", handleClick, false);
+			element.addEventListener("blip", handleBlip, false);
+		} else if (element.attachEvent) {
+			element.attachEvent("onclick", handleClick);
+
+			// IE can't handle custom events
+			element.attachEvent("ondataavailable", handleCustomForIE);
+			element.attachEvent("onlosecapture", handleCustomForIE);
+		}
+
+		if (!(/http/.test(window.location.protocol))) {
+			var p = document.createElement("p");
+			p.innerHTML = "For Flash Security reason, you should launch this page via HTTP";
+			document.body.appendChild(p);
+		}
+	</script>
+</body>
+</html>
