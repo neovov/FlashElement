@@ -26,6 +26,7 @@ or
 	FlashElement.dispatch(event); // Dispatch an existing event (MouseEvent, KeyboardEvent, etc)
 
 In JS :
+
 1. Create a bridge instance:
 
 	new FlashElement(); // Fully automatic
