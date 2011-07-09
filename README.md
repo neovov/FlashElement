@@ -4,14 +4,14 @@ Haven't you ever been bored to simply make this:
 
 	my_object_element.addEventListener("click", handleFreakinClick, false);
 
-And just handle it like a regular <div> or whatever?
+And just handle it like a regular &lt;div&gt; or whatever?
 Well… I do, so I tested this proof of concept and it seems to work.
 
 # Features #
 
 - Can dispatch AS3 events or custom events (make a new Event("whatever")) to the DOM
 - Communicate to a JS bridge which can create the markup too (SWFObject style, but… lighter)
-- Clean existing AS3 events to dispatch them to the DOM. Some AS3 event's properties doesn't make sense on the DOM (such as event.stage)
+- Clean existing AS3 events to dispatch them to the DOM. Some AS3 events' properties doesn't make sense on the DOM (such as event.stage)
 - Custom events can be used via ondataavailable and onlosecapture in IE which doesn't support custom events on a tag. Have a look at the example.html to see how to handle it
 - No framework needed (nor SWFObject)
 
@@ -34,9 +34,9 @@ In JS :
 	new FlashElement("player_id", options); // Define the object ID and use specific options (will be merged to default)
 	new FlashElement(options); // Set automagically an ID and use specific options
 
-2. Create the <object> and replace a dummy node (I know, this method name is crappy)
+2. Create the &lt;object&gt; and replace a dummy node (I know, this method name is crappy)
 
-	instance.create("dummy_node"); // Return the <object> element
+	instance.create("dummy_node"); // Return the &lt;object&gt; element
 
 3. Register some listerners
 
